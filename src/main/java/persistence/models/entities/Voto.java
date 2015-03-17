@@ -1,27 +1,44 @@
 package persistence.models.entities;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import persistence.models.utils.NivelEstudios;
 
 @Entity
+@Table(name = Voto.TABLE)
 public class Voto {
-	
+    public static final String TABLE = "VOTO";
+
+    public static final String ID = "ID";	
 	@Id
+    @GeneratedValue
+    @Column(name = ID)
 	private Integer id;
 	
+	public static final String VALORACION = "VALORACION";	
+    @Column(name = VALORACION)
 	private String valoracion;
 	
+	public static final String NIVEL_ESTUDIOS = "NIVEL_ESTUDIOS";	
+    @Column(name = NIVEL_ESTUDIOS)
+	@Enumerated(EnumType.STRING)
 	private NivelEstudios nivelEstudios;
 	
+	public static final String IP_USUARIO = "IP_USUARIO";	
+    @Column(name = IP_USUARIO)
 	private String ipUsuario;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn
+    public static final String ID_TEMA = "ID_TEMA";
+	@ManyToOne
+    @JoinColumn(name = ID_TEMA)
 	private Tema tema;
 	
 	public Voto(){

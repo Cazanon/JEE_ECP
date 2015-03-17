@@ -1,16 +1,28 @@
 package persistence.models.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = Tema.TABLE)
 public class Tema {
-	
-	@Id
+    public static final String TABLE = "TEMA";
+
+    public static final String ID = "ID";
+    @Id
+    @GeneratedValue
+    @Column(name = ID)
 	private Integer id;
 	
+    public static final String NOMBRE = "NOMBRE";    
+    @Column(name = NOMBRE)
 	private String nombre;
-	
+    
+    public static final String PREGUNTA = "PREGUNTA";    
+    @Column(name = PREGUNTA)
 	private String pregunta;
 	
 	public Tema(){
