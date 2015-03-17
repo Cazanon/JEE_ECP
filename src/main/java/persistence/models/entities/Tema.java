@@ -1,5 +1,63 @@
 package persistence.models.entities;
 
-public class Tema {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Tema {
+	
+	@Id
+	private Integer id;
+	
+	private String nombre;
+	
+	private String pregunta;
+	
+	public Tema(){
+		super();
+	}
+	
+	public Tema(String nombre, String pregunta){
+		super();
+		this.nombre = nombre;
+		this.pregunta = pregunta;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getPregunta() {
+		return pregunta;
+	}
+
+	public void setPregunta(String pregunta) {
+		this.pregunta = pregunta;
+	}
+	
+	@Override
+    public boolean equals(Object obj) {
+        assert obj != null;
+        Tema other = (Tema) obj;
+        return id.equals(other.id) && nombre.equals(other.nombre)
+                && pregunta.equals(other.pregunta);
+    }
+	
+    @Override
+    public String toString() {
+        return "User[id=" + id + ", nombre=" + nombre + "]";
+    }
+	
 }
