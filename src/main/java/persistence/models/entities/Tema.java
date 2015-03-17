@@ -69,7 +69,8 @@ public class Tema {
 	
     @Override
     public String toString() {
-        return "User[id=" + id + ", nombre=" + nombre + "]";
+    	return "Voto-> \tIP Nombre: "+ nombre +",\n "
+    			+ "\tPregunta: "+ pregunta +"\n";
     }
 	
 }

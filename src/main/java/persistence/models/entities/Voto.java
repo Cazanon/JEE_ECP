@@ -6,7 +6,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,8 +36,7 @@ public class Voto {
 	private String ipUsuario;
 	
     public static final String ID_TEMA = "ID_TEMA";
-	@ManyToOne
-    @JoinColumn(name = ID_TEMA)
+	@ManyToOne    
 	private Tema tema;
 	
 	public Voto(){
@@ -104,7 +102,10 @@ public class Voto {
 	
     @Override
     public String toString() {
-        return "User[id=" + id + ", valoracion=" + valoracion + "]";
+    	return "Voto-> \tIP Usuario: "+ ipUsuario +",\n "
+    			+ "\tTema: "+ tema +",\n +"
+    			+ "\tValoracion: "+ valoracion +",\n "
+    			+ "\tNivel de Estudios: "+ nivelEstudios +"\n";
     }
 	
 }
