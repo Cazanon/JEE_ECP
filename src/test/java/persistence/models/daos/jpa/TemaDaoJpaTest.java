@@ -2,6 +2,7 @@ package persistence.models.daos.jpa;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
@@ -42,7 +43,7 @@ public class TemaDaoJpaTest {
         tema.setNombre("Tema Test Update");
         tema.setPregunta("Pregunta Test Update");	        
         dao.update(tema);
-        assertEquals(tema, dao.read(tema.getId()));
+        assertEquals(tema.getNombre(), dao.read(tema.getId()).getNombre());
     }
 
     @Test
@@ -57,6 +58,11 @@ public class TemaDaoJpaTest {
         dao = DaoFactory.getFactory().getTemaDao();
         dao.create(tema);
         assertEquals(2, dao.findAll().size());
+	}
+    
+    @Test
+    public void testEquals() {      
+        assertTrue(tema.equals(dao.read(tema.getId())));
 	}
 
     @After
