@@ -1,5 +1,7 @@
 package persistence.models.daos;
 
-public class TemaDao {
+import persistence.models.entities.Tema;
+
+public interface TemaDao extends GenericDao<Tema, Integer> {
 
 }

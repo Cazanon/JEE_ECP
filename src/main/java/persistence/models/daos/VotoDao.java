@@ -1,5 +1,7 @@
 package persistence.models.daos;
 
-public class VotoDao {
+import persistence.models.entities.Voto;
+
+public interface VotoDao extends GenericDao<Voto, Integer> {
 
 }
