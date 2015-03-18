@@ -3,7 +3,6 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
@@ -16,13 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 
-import entity.User;
-
 @WebServlet("/HelloJpa")
 public class HelloJpa extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings("unchecked")
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String error = "";
@@ -52,9 +48,10 @@ public class HelloJpa extends HttpServlet {
         if (error.equals("")) {
             try {
                 em.getTransaction().begin();
-                em.persist(new User(1, ""));
-                em.persist(new User(2, "Funciona"));
-                em.persist(new User(3, "Bien"));
+                //em.persist(new User(1, ""));
+                //em.persist(new User(2, "Funciona"));
+                //em.persist(new User(3, "Bien"));
+                //em.persist(new Tema("TemaPrueba","PreguntaPrueba"));
                 em.getTransaction().commit();
             } catch (Exception e) {
             }
@@ -62,8 +59,8 @@ public class HelloJpa extends HttpServlet {
 
         if (error.equals("")) {
             try {
-                List<User> users = em.createQuery("SELECT u FROM User u").getResultList();
-                salida += users.toString();
+                //List<User> users = em.createQuery("SELECT u FROM User u").getResultList();
+                //salida += users.toString();
             } catch (Exception e) {
                 error += e.getMessage();
             }
