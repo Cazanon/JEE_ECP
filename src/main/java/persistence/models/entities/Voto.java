@@ -102,10 +102,8 @@ public class Voto {
 	
     @Override
     public String toString() {
-    	return "Voto-> \tIP Usuario: "+ ipUsuario +",\n "
-    			+ "\tTema: "+ tema +",\n +"
-    			+ "\tValoracion: "+ valoracion +",\n "
-    			+ "\tNivel de Estudios: "+ nivelEstudios +"\n";
+    	return "\nVoto->IP Usuario: "+ ipUsuario +",\tTema: "+ tema +",\tValoracion: "
+    			+ valoracion +",\tNivel de Estudios: "+ nivelEstudios +"\n";
     }
 	
 }

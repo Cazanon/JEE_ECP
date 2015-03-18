@@ -69,8 +69,7 @@ public class Tema {
 	
     @Override
     public String toString() {
-    	return "Voto-> \tIP Nombre: "+ nombre +",\n "
-    			+ "\tPregunta: "+ pregunta +"\n";
+    	return "\nTema->Nombre: "+ nombre +",\tPregunta: "+ pregunta +"\n";
     }
 	
 }
