@@ -19,10 +19,20 @@ public class TemaController {
     	}
     	return listaTemasBean;
 	}
-	
+
+	public static void addTema(TemaBean tema) {
+    	DaoFactory.setFactory(new DaoJpaFactory());
+    	DaoJpaFactory.getFactory().getTemaDao().create(temaBeanToEntity(tema));
+	}
+
 	private static TemaBean temaEntityToBean(Tema tema){
 		return new TemaBean(tema.getNombre(),tema.getPregunta());
 	}
+	
+	private static Tema temaBeanToEntity(TemaBean tema) {
+		return new Tema(tema.getNombre(),tema.getPregunta());
+	}
+
 
 	//Preguntas profe:
 //		Cuando se crea el DAO?
