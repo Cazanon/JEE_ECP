@@ -2,41 +2,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Prueba servidor Web</title>
-<style type="text/css">
-  span {
-    color: red;
-    font-weight: bold;
-  }
-  </style>
+<title>Aplicación Votación - Carlos Azañón</title>
 </head>
 <body>
-    <h1>Prueba servidor Web</h1>
-    <P><span>Test of HelloServlet:</span> <a href="HelloServlet">HelloServlet</a></p>
-    <P><span>Test of HelloJdbc:</span> Se crea, se inserta y se consulta la siguiente tabla:</p>
-    <table>
-    <tr><td><table border='1'>
-       <tr><th colspan='2'>user</th></tr>
-       <tr><th>ID</th><th>NAME</th></tr>
-       <tr><td>1</td><td>-</td></tr>
-       <tr><td>2</td><td>Funciona</td></tr>
-       <tr><td>3</td><td>Bien</td></tr>
-    </table>
-    </td><td>    
-    <form action="HelloJdbc" method="post">
-        <p>BD: <input type="text" name="bd" value="jee">
-        User: <input type="text" name="user" value="root">
-        Pass: <input type="password" name="pass" value=""></p>
-        <p><input type="submit" value="Crear, Insertar y Consultar tabla"></p>
+    <h1>Aplicación Votación</h1>
+    <h2>Opciones votos:</h2>
+    <p>Votar</p>
+    <p>Ver Votos</p>
+    <p>Añadir Tema</p>
+    <form action="listarTemas" method="post">
+    	<input type="submit" value="Eliminar Tema"></p>
     </form>
-    </td></tr></table>
-    <P><span>Test HelloJpa:</span> Se crea, se inserta y se consulta la entidad User</p>
-    <form action="HelloJpa" method="post">
-        <p>BD: <input type="text" name="bd" value="jee">
-        User: <input type="text" name="user" value="root">
-        Pass: <input type="password" name="pass" value=""></p>
-        <p><input type="submit" value="Crear, Insertar y Consultar tabla"></p>
-    </form>
-    <p><span>Test of HelloJsf:</span> <a href="HelloJsf.jsf">HelloJsf</a>
 </body>
 </html>
