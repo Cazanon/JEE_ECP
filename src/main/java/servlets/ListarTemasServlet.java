@@ -19,10 +19,9 @@ public class ListarTemasServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     	
-    	List<TemaBean> listaTemas = TemaController.getTemas();   	
+    	List<TemaBean> listaTemas = TemaController.getTemas();
     	request.setAttribute("temas", listaTemas);
         this.getServletContext().getRequestDispatcher("/JSP/TemasView.jsp").forward(request, response);
-
     }
 
 }

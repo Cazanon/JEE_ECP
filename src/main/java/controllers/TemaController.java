@@ -20,8 +20,12 @@ public class TemaController {
     	return listaTemasBean;
 	}
 	
-	private static TemaBean temaEntityToBean(Tema tema){		
-		return null;
+	private static TemaBean temaEntityToBean(Tema tema){
+		return new TemaBean(tema.getNombre(),tema.getPregunta());
 	}
 
+	//Preguntas profe:
+//		Cuando se crea el DAO?
+//		Servlet llama a Controller y llama a DAO?
+//		Servlet solo de redireccion?
 }
