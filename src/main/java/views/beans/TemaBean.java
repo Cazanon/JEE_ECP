@@ -2,7 +2,7 @@ package views.beans;
 
 public class TemaBean {
 
-	private Integer id;
+	private int id;
 	
 	private String nombre;
 		
@@ -13,7 +13,7 @@ public class TemaBean {
 		this.pregunta = pregunta;
 	}
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 	
