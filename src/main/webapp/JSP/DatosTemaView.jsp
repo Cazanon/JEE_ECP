@@ -15,6 +15,6 @@
 <br/>
 <br/>
 <br/>
-<a href="../index.html">Volver a Página Principal</a>
+<a href="index.html">Volver a Página Principal</a>
 </body>
 </html>

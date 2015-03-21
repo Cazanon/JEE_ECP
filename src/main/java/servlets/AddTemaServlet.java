@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import views.beans.TemaBean;
 import controllers.TemaController;
 
-@WebServlet("addTema")
+@WebServlet("/addTema")
 public class AddTemaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
