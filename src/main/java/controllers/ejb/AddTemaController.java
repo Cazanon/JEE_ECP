@@ -6,7 +6,7 @@ import persistence.models.entities.Tema;
 
 public class AddTemaController {
 
-	public void addTema(Tema tema){
+	public void add(Tema tema){
 		TemaDao dao = DaoFactory.getFactory().getTemaDao();
 		dao.create(tema);
 	}
