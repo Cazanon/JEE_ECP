@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import persistence.models.daos.DaoFactory;
+import persistence.models.daos.TemaDao;
 import persistence.models.daos.VotoDao;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
@@ -20,6 +21,7 @@ import persistence.models.utils.NivelEstudios;
 public class VotoDaoJpaTest {
 	
 	private VotoDao dao;
+	private TemaDao daoTema;
 	
     @BeforeClass
     public static void beforeClass() {
@@ -30,6 +32,7 @@ public class VotoDaoJpaTest {
     @Before
     public void before() {    	
         dao = DaoFactory.getFactory().getVotoDao();
+        daoTema = DaoFactory.getFactory().getTemaDao();
     }
     
     @After
@@ -38,12 +41,17 @@ public class VotoDaoJpaTest {
     	for (Voto voto : votos) {
 			dao.deleteById(voto.getId());    		
 		}
+    	List<Tema> temas = daoTema.findAll();
+    	for (Tema tema : temas) {
+			daoTema.deleteById(tema.getId());    		
+		}
     }
 
     @Test
     public void testCreate() {
     	Tema tema = new Tema("Tema Test","Pregunta Test");
         Voto votoCreate = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        daoTema.create(tema);
     	dao.create(votoCreate);
         assertEquals(votoCreate, dao.read(votoCreate.getId()));
     }    
@@ -52,6 +60,7 @@ public class VotoDaoJpaTest {
     public void testRead() {
     	Tema tema = new Tema("Tema Test","Pregunta Test");
         Voto votoRead = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        daoTema.create(tema);
         dao.create(votoRead);
         assertEquals(votoRead, dao.read(votoRead.getId()));
     }
@@ -60,13 +69,15 @@ public class VotoDaoJpaTest {
     public void testUpdate() {
     	Tema tema = new Tema("Tema Test","Pregunta Test");
         Voto votoUpdate = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        daoTema.create(tema);
     	dao.create(votoUpdate);
     	votoUpdate.setIpUsuario("IP1");
     	votoUpdate.setNivelEstudios(NivelEstudios.ESO);
     	tema.setNombre("Tema Test 1");
     	tema.setPregunta("Pregunta Test 1");
     	votoUpdate.setTema(tema);
-    	votoUpdate.setValoracion("2");      
+    	votoUpdate.setValoracion("2");  
+    	daoTema.update(tema);
         dao.update(votoUpdate);
         assertEquals(votoUpdate.getIpUsuario(), dao.read(votoUpdate.getId()).getIpUsuario());
         assertEquals(votoUpdate.getNivelEstudios(), dao.read(votoUpdate.getId()).getNivelEstudios());
@@ -80,7 +91,9 @@ public class VotoDaoJpaTest {
         Voto votoFind1 = new Voto("1",NivelEstudios.BASICO,"IP",tema1);
     	Tema tema2 = new Tema("Tema Test 2","Pregunta Test 2");
         Voto votoFind2 = new Voto("1",NivelEstudios.BASICO,"IP",tema2);
+        daoTema.create(tema1);
     	dao.create(votoFind1);
+    	daoTema.create(tema2);
     	dao.create(votoFind2);
         assertEquals(2, dao.findAll().size());
 	}
@@ -89,6 +102,7 @@ public class VotoDaoJpaTest {
     public void testEquals() {   
     	Tema tema = new Tema("Tema Test","Pregunta Test");
         Voto votoEquals = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        daoTema.create(tema);
         dao.create(votoEquals);    
         assertTrue(votoEquals.equals(dao.read(votoEquals.getId())));
 	}
@@ -97,6 +111,7 @@ public class VotoDaoJpaTest {
     public void testDeleteByID() {
     	Tema tema = new Tema("Tema Test","Pregunta Test");
         Voto votoDelete = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        daoTema.create(tema);
         dao.create(votoDelete);    	
         dao.deleteById(votoDelete.getId());       
         assertNull(dao.read(votoDelete.getId()));
