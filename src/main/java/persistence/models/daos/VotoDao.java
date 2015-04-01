@@ -7,6 +7,6 @@ import persistence.models.entities.Voto;
 
 public interface VotoDao extends GenericDao<Voto, Integer> {
 
-	List<Voto> getVotos(Tema tema);
+	public List<Voto> getVotos(Tema tema);
 	
 }
