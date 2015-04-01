@@ -16,6 +16,7 @@ public class EliminarTemaController {
 		TemaDao daoTema = DaoFactory.getFactory().getTemaDao();
 		VotoDao daoVoto = DaoFactory.getFactory().getVotoDao();
 		
+		//Hacer esta logica en el DAO?
 		List<Voto> votos = daoVoto.findAll();
 		for (Voto voto : votos) {
 			if(voto.getTema().getId() == tema.getId()){
