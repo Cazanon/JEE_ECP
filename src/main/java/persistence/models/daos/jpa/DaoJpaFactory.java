@@ -16,8 +16,7 @@ import persistence.models.daos.VotoDao;
 public class DaoJpaFactory extends DaoFactory {
     private static final String PERSISTENCE_UNIT = "JEE_ECP";
 
-    private static EntityManagerFactory entityManagerFactory = Persistence
-            .createEntityManagerFactory(PERSISTENCE_UNIT);
+    private static EntityManagerFactory entityManagerFactory;
 
     public DaoJpaFactory() {
         LogManager.getLogger(DaoJpaFactory.class).debug("create Entity Manager Factory");
@@ -25,14 +24,17 @@ public class DaoJpaFactory extends DaoFactory {
 
     public static void dropAndCreateTables() {
     	Map<String, String> properties = new HashMap<>();
-    	properties.put(PersistenceUnitProperties.DDL_GENERATION,
-    	PersistenceUnitProperties.DROP_AND_CREATE);
+    	properties.put(PersistenceUnitProperties.DDL_GENERATION, PersistenceUnitProperties.DROP_AND_CREATE);
     	entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT, properties);
-    	LogManager.getLogger(DaoJpaFactory.class).debug("create Entity Manager Factory");
+    	
     }    
     
     public static EntityManagerFactory getEntityManagerFactory() {
-        return entityManagerFactory;
+        if(entityManagerFactory == null){
+        	entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
+        	LogManager.getLogger(DaoJpaFactory.class).debug("create Entity Manager Factory");
+        }    	
+    	return entityManagerFactory;
     }
 
     @Override
