@@ -1,5 +1,6 @@
 package persistence.models.daos.jpa;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import persistence.models.daos.VotoDao;
@@ -14,8 +15,8 @@ public class VotoDaoJpa extends GenericDaoJpa<Voto, Integer> implements VotoDao 
 
 	@Override
 	public List<Voto> getVotos(Tema tema) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO implementar funcionalidad
+		return new ArrayList<Voto>();
 	}
 	
 }
