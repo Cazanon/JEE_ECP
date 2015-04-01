@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,64 +20,86 @@ import persistence.models.utils.NivelEstudios;
 public class VotoDaoJpaTest {
 	
 	private VotoDao dao;
-
-	private Voto voto;
-	private static Tema tema;
-
+	
     @BeforeClass
     public static void beforeClass() {
         DaoFactory.setFactory(new DaoJpaFactory());
-        DaoJpaFactory.dropAndCreateTables();        
-        tema = new Tema("Tema Test","Pregunta Test");
-        DaoFactory.getFactory().getTemaDao().create(tema);;
+        DaoJpaFactory.dropAndCreateTables();
     }
 
     @Before
-    public void before() {
-    	this.voto = new Voto("Valoracion Test", NivelEstudios.BASICO, "IP Test", tema);
+    public void before() {    	
         dao = DaoFactory.getFactory().getVotoDao();
-        dao.create(voto);
+    }
+    
+    @After
+    public void after() {
+    	List<Voto> votos = dao.findAll();
+    	for (Voto voto : votos) {
+			dao.deleteById(voto.getId());    		
+		}
     }
 
     @Test
+    public void testCreate() {
+    	Tema tema = new Tema("Tema Test","Pregunta Test");
+        Voto votoCreate = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+    	dao.create(votoCreate);
+        assertEquals(votoCreate, dao.read(votoCreate.getId()));
+    }    
+    
+    @Test
     public void testRead() {
-        assertEquals(voto, dao.read(voto.getId()));
+    	Tema tema = new Tema("Tema Test","Pregunta Test");
+        Voto votoRead = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        dao.create(votoRead);
+        assertEquals(votoRead, dao.read(votoRead.getId()));
     }
 
     @Test
     public void testUpdate() {
-        voto.setValoracion("Valoracion Test Update");
-        voto.setNivelEstudios(NivelEstudios.ESO);
-        voto.setIpUsuario("IP Test Update");
-        tema.setNombre("Tema Test Update");
-        tema.setPregunta("Pregunta Test Update");	 
-        voto.setTema(tema);
-        dao.update(voto);
-        assertEquals(voto.getValoracion(), dao.read(voto.getId()).getValoracion());
-    }
-
-    @Test
-    public void testDeleteByID() {
-        dao.deleteById(voto.getId());
-        assertNull(dao.read(voto.getId()));
+    	Tema tema = new Tema("Tema Test","Pregunta Test");
+        Voto votoUpdate = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+    	dao.create(votoUpdate);
+    	votoUpdate.setIpUsuario("IP1");
+    	votoUpdate.setNivelEstudios(NivelEstudios.ESO);
+    	tema.setNombre("Tema Test 1");
+    	tema.setPregunta("Pregunta Test 1");
+    	votoUpdate.setTema(tema);
+    	votoUpdate.setValoracion("2");      
+        dao.update(votoUpdate);
+        assertEquals(votoUpdate.getIpUsuario(), dao.read(votoUpdate.getId()).getIpUsuario());
+        assertEquals(votoUpdate.getNivelEstudios(), dao.read(votoUpdate.getId()).getNivelEstudios());
+        assertEquals(votoUpdate.getTema(), dao.read(votoUpdate.getId()).getTema());
+        assertEquals(votoUpdate.getValoracion(), dao.read(votoUpdate.getId()).getValoracion());
     }
 
     @Test
     public void testFindAll() {
-    	this.voto = new Voto("Valoracion Test 2", NivelEstudios.POSTGRADO, "IP Test 2", tema);      
-        dao = DaoFactory.getFactory().getVotoDao();
-        dao.create(voto);
+    	Tema tema1 = new Tema("Tema Test 1","Pregunta Test 1");
+        Voto votoFind1 = new Voto("1",NivelEstudios.BASICO,"IP",tema1);
+    	Tema tema2 = new Tema("Tema Test 2","Pregunta Test 2");
+        Voto votoFind2 = new Voto("1",NivelEstudios.BASICO,"IP",tema2);
+    	dao.create(votoFind1);
+    	dao.create(votoFind2);
         assertEquals(2, dao.findAll().size());
 	}
     
     @Test
-    public void testEquals() {      
-        assertTrue(voto.equals(dao.read(voto.getId())));
+    public void testEquals() {   
+    	Tema tema = new Tema("Tema Test","Pregunta Test");
+        Voto votoEquals = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        dao.create(votoEquals);    
+        assertTrue(votoEquals.equals(dao.read(votoEquals.getId())));
 	}
-
-    @After
-    public void after() {
-        DaoJpaFactory.dropAndCreateTables();
-    }
+    
+    @Test
+    public void testDeleteByID() {
+    	Tema tema = new Tema("Tema Test","Pregunta Test");
+        Voto votoDelete = new Voto("1",NivelEstudios.BASICO,"IP",tema);
+        dao.create(votoDelete);    	
+        dao.deleteById(votoDelete.getId());       
+        assertNull(dao.read(votoDelete.getId()));
+    }    
 
 }

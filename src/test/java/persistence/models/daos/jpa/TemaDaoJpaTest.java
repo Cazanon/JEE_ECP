@@ -48,44 +48,44 @@ public class TemaDaoJpaTest {
     
     @Test
     public void testRead() {
-        Tema temaTestRead = new Tema("Tema Test","Pregunta Test");
-        dao.create(temaTestRead);
-        assertEquals(temaTestRead, dao.read(temaTestRead.getId()));
+        Tema temaRead = new Tema("Tema Test","Pregunta Test");
+        dao.create(temaRead);
+        assertEquals(temaRead, dao.read(temaRead.getId()));
     }
 
     @Test
     public void testUpdate() {
-    	Tema temaTestUpdate = new Tema("Tema Test","Pregunta Test");
-    	dao.create(temaTestUpdate);
-    	temaTestUpdate.setNombre("Tema Test Update");
-    	temaTestUpdate.setPregunta("Pregunta Test Update");	        
-        dao.update(temaTestUpdate);
-        assertEquals(temaTestUpdate.getNombre(), dao.read(temaTestUpdate.getId()).getNombre());
-        assertEquals(temaTestUpdate.getPregunta(), dao.read(temaTestUpdate.getId()).getPregunta());
+    	Tema temaUpdate = new Tema("Tema Test","Pregunta Test");
+    	dao.create(temaUpdate);
+    	temaUpdate.setNombre("Tema Test Update");
+    	temaUpdate.setPregunta("Pregunta Test Update");	        
+        dao.update(temaUpdate);
+        assertEquals(temaUpdate.getNombre(), dao.read(temaUpdate.getId()).getNombre());
+        assertEquals(temaUpdate.getPregunta(), dao.read(temaUpdate.getId()).getPregunta());
     }
 
     @Test
     public void testFindAll() {
-    	Tema temaTestFind1 = new Tema("Tema Test 1","Pregunta Test 1");
-    	Tema temaTestFind2 = new Tema("Tema Test 2","Pregunta Test 2");
-    	dao.create(temaTestFind1);
-    	dao.create(temaTestFind2);
+    	Tema temaFind1 = new Tema("Tema Test 1","Pregunta Test 1");
+    	Tema temaFind2 = new Tema("Tema Test 2","Pregunta Test 2");
+    	dao.create(temaFind1);
+    	dao.create(temaFind2);
         assertEquals(2, dao.findAll().size());
 	}
     
     @Test
     public void testEquals() {   
-    	Tema temaTestEquals = new Tema("Tema Test","Pregunta Test");
-        dao.create(temaTestEquals);    
-        assertTrue(temaTestEquals.equals(dao.read(temaTestEquals.getId())));
+    	Tema temaEquals = new Tema("Tema Test","Pregunta Test");
+        dao.create(temaEquals);    
+        assertTrue(temaEquals.equals(dao.read(temaEquals.getId())));
 	}
     
     @Test
     public void testDeleteByID() {
-    	Tema temaTestDelete = new Tema("Tema Test","Pregunta Test");
-        dao.create(temaTestDelete);    	
-        dao.deleteById(temaTestDelete.getId());       
-        assertNull(dao.read(temaTestDelete.getId()));
+    	Tema temaDelete = new Tema("Tema Test","Pregunta Test");
+        dao.create(temaDelete);    	
+        dao.deleteById(temaDelete.getId());       
+        assertNull(dao.read(temaDelete.getId()));
     }    
 
 }
