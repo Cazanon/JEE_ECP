@@ -32,7 +32,7 @@ public class VotoDaoJpaTest {
 
     @Before
     public void before() {
-    	this.voto = new Voto("Valoracion Test", NivelEstudios.BASICA, "IP Test", tema);
+    	this.voto = new Voto("Valoracion Test", NivelEstudios.BASICO, "IP Test", tema);
         dao = DaoFactory.getFactory().getVotoDao();
         dao.create(voto);
     }
