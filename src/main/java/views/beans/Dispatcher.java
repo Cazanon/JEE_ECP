@@ -35,6 +35,9 @@ public class Dispatcher extends HttpServlet{
         	view = action;
         	break;
         case "verVotos":
+        	VerVotosBean verVotosBean = new VerVotosBean();
+        	verVotosBean.update();
+        	request.setAttribute(action+"Bean",verVotosBean);
         	view = action;
         	break;
         case "addTema":
@@ -80,6 +83,16 @@ public class Dispatcher extends HttpServlet{
         	view = action;
         	break;
         case "verVotos":
+        	VerVotosBean verVotosBean = new VerVotosBean();
+        	if(request.getParameter("tema")!=null){
+        		verVotosBean.obtenerTema(request.getParameter("tema"));
+        	}else{
+        		verVotosBean.obtenerTema(request.getParameter("temaSeleccionado"));
+        	}
+        	verVotosBean.setNivelEstudios(request.getParameter("nivelEstudios"));
+        	verVotosBean.process();
+        	verVotosBean.update();
+        	request.setAttribute(action+"Bean",verVotosBean);
         	view = action;
         	break;
         case "addTema":
