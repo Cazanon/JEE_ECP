@@ -6,6 +6,10 @@
 </head>
 <body>
     <h1>Aplicación de Votos</h1>
-    <a href="/JEE_ECP/views/jsp/home.jsp"><h2>JSP</h2></a>    
+    <h2>Selecciona una opción</h2>
+    <a href="/JEE_ECP/JSPview/home"><h2>JSP</h2></a>
+    <a href="/JEE_ECP/JSPview/home"><h2>JSP</h2></a>  
+    <a href="/JEE_ECP/JSPview/home"><h2>JSP</h2></a>  
+    <a href="/JEE_ECP/JSPview/home"><h2>JSP</h2></a>      
 </body>
 </html>
