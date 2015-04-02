@@ -12,16 +12,16 @@
 	<c:set var="bean" scope="request" value="${votarBean}" />
 	
 	<p>Selecciona un tema para votar</p>
-		<select name="select" id="select">
-			<c:forEach var="tema" items="${bean.temas}">
-				<option value="${tema.id}">${tema.nombre}</option>
-			</c:forEach>
-		</select>
+	<select name="select" id="select">
+		<c:forEach var="tema" items="${bean.temas}">
+			<option value="${tema.id}">${tema.nombre}</option>
+		</c:forEach>
+	</select>
 
 
 <br/>
 <br/>
 <br/>
-<a href="/JEE_ECP/views/jsp/home.jsp">Volver a Página Principal</a>
+<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 </body>
 </html>

@@ -8,9 +8,9 @@
 <body>
     <h1>Aplicación de Votos</h1>
     <h2>Selecciona una opción</h2>
-   	<h2><a href="/JEE_ECP/views/jsp/votar.jsp">Votar</a></h2>
-    <h2><a href="/JEE_ECP/views/jsp/verVotos.jsp">Ver Votos</a></h2>  
-    <h2><a href="/JEE_ECP/views/jsp/addTema.jsp">Añadir Tema</a></h2>
-    <h2><a href="/JEE_ECP/views/jsp/eliminarTema.jsp">Eliminar Tema</a></h2>      
+   	<h2><a href="/JEE_ECP/jsp/votar">Votar</a></h2>
+    <h2><a href="/JEE_ECP/jsp/verVotos">Ver Votos</a></h2>  
+    <h2><a href="/JEE_ECP/jsp/addTema">Añadir Tema</a></h2>
+    <h2><a href="/JEE_ECP/jsp/eliminarTema">Eliminar Tema</a></h2>      
 </body>
 </html>
