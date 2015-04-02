@@ -5,7 +5,7 @@ import persistence.models.daos.TemaDao;
 import persistence.models.daos.jpa.DaoJpaFactory;
 import persistence.models.entities.Tema;
 
-public class AddTemaController {
+public class AddTemaEJBController {
 
 	public void add(Tema tema){
 		DaoFactory.setFactory(new DaoJpaFactory());

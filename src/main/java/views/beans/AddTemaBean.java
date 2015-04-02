@@ -3,7 +3,7 @@ package views.beans;
 import javax.faces.bean.ManagedBean;
 
 import persistence.models.entities.Tema;
-import controllers.ejb.AddTemaController;
+import controllers.ejb.AddTemaEJBController;
 
 @ManagedBean
 public class AddTemaBean extends View{
@@ -40,7 +40,7 @@ public class AddTemaBean extends View{
 
 	public void process() {
 		assert tema != null;		
-		AddTemaController addTemaController = getControllerFactory().getAddTemaController(); 
+		AddTemaEJBController addTemaController = getControllerFactory().getAddTemaController(); 
 		if(!addTemaController.existe(tema)){
 			addTemaController.add(tema);
 			added = true;

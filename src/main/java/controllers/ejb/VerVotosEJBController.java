@@ -7,7 +7,7 @@ import persistence.models.daos.jpa.DaoJpaFactory;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
 
-public class VerVotosController {
+public class VerVotosEJBController {
 
 	public int votosPorTema(Tema tema){
 		return DaoFactory.getFactory().getVotoDao().getVotos(tema).size();
