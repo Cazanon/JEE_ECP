@@ -1,8 +1,10 @@
 package views.beans;
 
-import persistence.models.entities.Tema;
-import controllers.ejb.AddTemaController;
+import javax.faces.bean.ManagedBean;
 
+import persistence.models.entities.Tema;
+
+@ManagedBean
 public class AddTemaBean extends View{
 
 	private static final long serialVersionUID = 1L;
@@ -18,9 +20,8 @@ public class AddTemaBean extends View{
 	}
 
 	public void process() {
-		AddTemaController addTemaController = this.getControllerFactory().getAddTemaController();
 		assert tema != null;		
-		addTemaController.add(tema);		
+		getControllerFactory().getAddTemaController().add(tema);
 	}
 
 }

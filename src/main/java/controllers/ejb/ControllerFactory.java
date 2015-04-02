@@ -1,11 +1,17 @@
 package controllers.ejb;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean(name = "controllerFactory")
+@ApplicationScoped
 public class ControllerFactory {
 	
 	private AddTemaController addTemaController;
 	private EliminarTemaController eliminarTemaController;
 	private VerVotosController verVotosController;
 	private VotarController votarController;
+	
 	
 	public AddTemaController getAddTemaController(){
 		if(addTemaController==null){

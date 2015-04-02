@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controllers.ejb.ControllerFactory;
 import persistence.models.entities.Tema;
 
 @WebServlet("/jsp/*")
@@ -16,6 +17,13 @@ public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private static String PATH_ROOT_VIEW = "/views/jsp/";
+	
+	private ControllerFactory controllerFactory;
+	
+	@Override
+    public void init() {
+        controllerFactory = new ControllerFactory();
+    }
 	
 	@Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -62,6 +70,7 @@ public class Dispatcher extends HttpServlet{
         case "addTema":
         	Tema tema =new Tema(request.getParameter("nombre"),request.getParameter("pregunta"));
         	AddTemaBean addTemaBean = new AddTemaBean();
+        	addTemaBean.setControllerFactory(controllerFactory);
         	addTemaBean.setTema(tema);
         	addTemaBean.process();
         	request.setAttribute(action+"Bean",addTemaBean);

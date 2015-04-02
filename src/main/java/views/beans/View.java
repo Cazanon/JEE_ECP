@@ -6,7 +6,7 @@ import javax.faces.bean.ManagedProperty;
 
 import controllers.ejb.ControllerFactory;
 
-public abstract class View implements Serializable{
+public class View implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
