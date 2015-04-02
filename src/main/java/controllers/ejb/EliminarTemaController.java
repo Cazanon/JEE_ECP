@@ -34,4 +34,8 @@ public class EliminarTemaController {
 		return false;
 	}
 	
+	public List<Tema> getTemas(){
+		return DaoFactory.getFactory().getTemaDao().findAll();
+	}
+	
 }
