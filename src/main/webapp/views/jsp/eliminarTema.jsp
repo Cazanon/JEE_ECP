@@ -14,7 +14,7 @@
 	Selecciona el tema a elminiar:</br>
 	<select name="select" id="select" >
 		<c:forEach var="tema" items="${bean.temas}">
-			<option value="${tema.id}">${tema.name}</option>
+			<option value="${tema.id}">${tema.nombre}</option>
 		</c:forEach>
 	</select>
 	<input type="submit" value="Eliminar"/>		

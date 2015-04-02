@@ -5,6 +5,7 @@ import java.util.List;
 import persistence.models.daos.DaoFactory;
 import persistence.models.daos.TemaDao;
 import persistence.models.daos.VotoDao;
+import persistence.models.daos.jpa.DaoJpaFactory;
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
 
@@ -35,6 +36,7 @@ public class EliminarTemaController {
 	}
 	
 	public List<Tema> getTemas(){
+		DaoFactory.setFactory(new DaoJpaFactory());
 		return DaoFactory.getFactory().getTemaDao().findAll();
 	}
 	

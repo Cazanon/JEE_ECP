@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 
-import controllers.ejb.AddTemaController;
 import persistence.models.entities.Tema;
 
 @ManagedBean
@@ -23,8 +22,7 @@ public class EliminarTemaBean extends View{
 	}
 
 	public void update() {
-		AddTemaController addTemaController = getControllerFactory().getAddTemaController(); 
-		
+		temas = getControllerFactory().getEliminarTemaController().getTemas(); 	
 	}
 
 }
