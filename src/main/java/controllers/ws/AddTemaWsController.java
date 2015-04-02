@@ -14,7 +14,7 @@ public class AddTemaWsController implements AddTemaController{
 	@Override
 	public boolean existe(Tema tema) {
 		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS,
-                tema.getId().toString(), TemaUris.PATH_CREATED_TEMA).entityBoolean();
+                tema.getId().toString(), TemaUris.PATH_EXISTE).entityBoolean();
 	}
 
 }

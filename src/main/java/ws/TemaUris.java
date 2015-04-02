@@ -6,5 +6,5 @@ public interface TemaUris {
 	
 	String PATH_ID= "/{id}";
 
-	String PATH_CREATED_TEMA = null;
+	String PATH_EXISTE = "/existe";
 }

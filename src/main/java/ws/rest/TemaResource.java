@@ -33,6 +33,16 @@ public class TemaResource {
 	}
 	
 	@GET
+    @Path(TemaUris.PATH_ID + TemaUris.PATH_EXISTE)
+    public String existe(@PathParam("id") Integer id) {
+        Boolean result;
+        DaoFactory.setFactory(new DaoJpaFactory());
+        Tema tema = DaoFactory.getFactory().getTemaDao().read(id);
+        result = tema != null;
+        return Boolean.toString(result);
+    }
+	
+	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Tema> getTemas() {
 		DaoFactory.setFactory(new DaoJpaFactory());

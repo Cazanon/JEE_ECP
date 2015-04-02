@@ -42,13 +42,13 @@ public class AddTemaBean extends View{
 		assert tema != null;
 		AddTemaWsController addTemaController = getControllerWSFactory().getAddTemaController();
 		//AddTemaEJBController addTemaController = getControllerFactory().getAddTemaController(); 
-		if(!addTemaController.existe(tema)){
+		//if(!addTemaController.existe(tema)){
 			addTemaController.add(tema);
 			added = true;
 			mensaje = "Tema añadido";
-		}else{
-			setMensaje("Tema no insertado, ya existe un tema con ese nombre");
-		}
+		//}else{
+			//setMensaje("Tema no insertado, ya existe un tema con ese nombre");
+		//}
 	}
 
 }
