@@ -8,13 +8,13 @@
 <title>Votar</title>
 </head>
 <script type="text/javascript">
-function mostrarValor(valor){
-	document.getElementById("valor").innerHTML = valor;
-}
+	function mostrarValor(valor){
+		document.getElementById("valor").innerHTML = valor;
+	}
 </script>
 <body>
 <h2>Votar</h2>
-<c:set var="bean" scope="request" value="${votarTemaBean}" />
+<c:set var="bean" scope="request" value="${votarBean}" />
 ${bean.mensaje}<br/><br/><br/>
 <form method="post" action="votar">
 	Selecciona un tema </br>
@@ -30,7 +30,7 @@ ${bean.mensaje}<br/><br/><br/>
 		<br/><br/>
 		<h3>Pregunta:<br/></h3>
 		${bean.tema.pregunta}<br/><br/>
-		Valoracion (0 a 5):
+		Valoracion (0 a 5):  
 		<input type="range" name="respuesta" value="0" min="0" max="5" step="1" onchange="mostrarValor(this.value)"/>
 		<span id="valor">0</span>
 		<br/><br/>

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import persistence.models.entities.Tema;
+import persistence.models.entities.Voto;
 
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet{
@@ -28,6 +29,9 @@ public class Dispatcher extends HttpServlet{
         String view;
         switch (action) {
         case "votar":
+        	VotarBean votarBean = new VotarBean();
+        	votarBean.update();
+        	request.setAttribute(action+"Bean",votarBean);
         	view = action;
         	break;
         case "verVotos":
@@ -59,6 +63,15 @@ public class Dispatcher extends HttpServlet{
         String view;
         switch (action) {
         case "votar":
+        	VotarBean votarBean = new VotarBean();
+        	votarBean.obtenerTema(request.getParameter("temaSeleccionado"));
+        	votarBean.setRespuesta(request.getParameter("valoracion"));
+        	votarBean.setNivelEstudios(request.getParameter("nivelEstudios"));
+        	Voto voto = new Voto(votarBean.getValoracion(), votarBean.getNivel(votarBean.getNivelEstudios()), votarBean.getIp(), votarBean.getTema());
+        	votarBean.setVoto(voto);
+        	votarBean.process();
+        	votarBean.update();
+        	request.setAttribute(action+"Bean",votarBean);
         	view = action;
         	break;
         case "verVotos":
