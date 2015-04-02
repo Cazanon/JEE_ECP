@@ -3,14 +3,14 @@ package controllers.ws;
 import java.util.List;
 
 import persistence.models.entities.Tema;
+import ws.TemaUris;
 import controllers.EliminarTemaController;
 
 public class EliminarTemaWsController implements EliminarTemaController{
 
 	@Override
 	public void eliminar(Tema tema) {
-		// TODO Auto-generated method stub
-		
+		ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, tema.getId().toString()).delete();		
 	}
 
 	@Override

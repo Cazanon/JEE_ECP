@@ -1,14 +1,14 @@
 package controllers.ws;
 
 import persistence.models.entities.Tema;
+import ws.TemaUris;
 import controllers.AddTemaController;
 
 public class AddTemaWsController implements AddTemaController{
 
 	@Override
 	public void add(Tema tema) {
-		// TODO Auto-generated method stub
-		
+		ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS).create(tema);		
 	}
 
 	@Override
