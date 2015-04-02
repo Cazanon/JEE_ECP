@@ -3,7 +3,7 @@ package controllers.ws;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-@ManagedBean(name = "controllerFactory")
+@ManagedBean(name = "controllerWsFactory")
 @ApplicationScoped
 public class ControllerWs {
 

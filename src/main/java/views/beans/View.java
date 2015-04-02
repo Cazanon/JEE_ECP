@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedProperty;
 
-import controllers.ControllerFactory;
 import controllers.ejb.ControllerEJBFactory;
 import controllers.ws.ControllerWsFactory;
 
@@ -12,20 +11,23 @@ public class View implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@ManagedProperty(value = "#{controllerFactory}")
-	private ControllerFactory controllerFactory;
+	@ManagedProperty(value = "#{controllerEJBFactory}")
+	private ControllerEJBFactory controllerEJBFactory;
+	
+	@ManagedProperty(value = "#{controllerWsFactory}")
+	private ControllerWsFactory controllerWsFactory;
 
 	public ControllerEJBFactory getControllerEJBFactory() {
-		if(controllerFactory == null){
-			controllerFactory = new ControllerEJBFactory();
+		if(controllerEJBFactory == null){
+			controllerEJBFactory = new ControllerEJBFactory();
 		}
-		return (ControllerEJBFactory) controllerFactory;
+		return controllerEJBFactory;
 	}
 
 	public ControllerWsFactory getControllerWSFactory() {
-		if(controllerFactory == null){
-			controllerFactory = new ControllerWsFactory();
+		if(controllerWsFactory == null){
+			controllerWsFactory = new ControllerWsFactory();
 		}
-		return (ControllerWsFactory) controllerFactory;
+		return controllerWsFactory;
 	}
 }

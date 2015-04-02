@@ -3,6 +3,7 @@ package views.beans;
 import javax.faces.bean.ManagedBean;
 
 import persistence.models.entities.Tema;
+import controllers.ejb.AddTemaEJBController;
 import controllers.ws.AddTemaWsController;
 
 @ManagedBean
@@ -41,14 +42,14 @@ public class AddTemaBean extends View{
 	public void process() {
 		assert tema != null;
 		AddTemaWsController addTemaController = getControllerWSFactory().getAddTemaController();
-		//AddTemaEJBController addTemaController = getControllerFactory().getAddTemaController(); 
-		//if(!addTemaController.existe(tema)){
+		//AddTemaEJBController addTemaController = getControllerEJBFactory().getAddTemaController(); 
+		if(!addTemaController.existe(tema)){
 			addTemaController.add(tema);
 			added = true;
 			mensaje = "Tema añadido";
-		//}else{
-			//setMensaje("Tema no insertado, ya existe un tema con ese nombre");
-		//}
+		}else{
+			setMensaje("Tema no insertado, ya existe un tema con ese nombre");
+		}
 	}
 
 }

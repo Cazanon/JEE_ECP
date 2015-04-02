@@ -5,7 +5,7 @@ import javax.faces.bean.ManagedBean;
 
 import controllers.ControllerFactory;
 
-@ManagedBean(name = "controllerFactory")
+@ManagedBean(name = "controllerEJBFactory")
 @ApplicationScoped
 public class ControllerEJBFactory implements ControllerFactory{
 	

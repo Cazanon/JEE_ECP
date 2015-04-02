@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import persistence.models.utils.NivelEstudios;
 import ws.VotoUris;
 
+@Path(VotoUris.PATH_VOTOS)
 public class VotoResource {
 	
 	@GET

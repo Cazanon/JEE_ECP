@@ -14,16 +14,17 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import persistence.models.daos.DaoFactory;
+import persistence.models.daos.TemaDao;
 import persistence.models.daos.jpa.DaoJpaFactory;
 import persistence.models.entities.Tema;
 import ws.TemaUris;
 
-
+@Path(TemaUris.PATH_TEMAS)
 public class TemaResource {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response add(Tema tema) {
+	public Response create(Tema tema) {
 		Response result;
 		DaoFactory.setFactory(new DaoJpaFactory());
 		DaoFactory.getFactory().getTemaDao().create(tema);
@@ -34,11 +35,15 @@ public class TemaResource {
 	
 	@GET
     @Path(TemaUris.PATH_ID + TemaUris.PATH_EXISTE)
-    public String existe(@PathParam("id") Integer id) {
-        Boolean result;
+    public String existe(@PathParam("nombre") String nombre) {
+        Boolean result = false;
         DaoFactory.setFactory(new DaoJpaFactory());
-        Tema tema = DaoFactory.getFactory().getTemaDao().read(id);
-        result = tema != null;
+        
+		DaoFactory.setFactory(new DaoJpaFactory());
+		TemaDao dao = DaoFactory.getFactory().getTemaDao();
+		for (Tema t : dao.findAll()){
+			if(t.getNombre().equals(nombre)) result = true;
+		}	
         return Boolean.toString(result);
     }
 	
