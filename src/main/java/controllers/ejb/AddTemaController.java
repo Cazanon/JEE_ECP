@@ -13,12 +13,12 @@ public class AddTemaController {
 		dao.create(tema);
 	}
 	
-	public boolean existe(Tema tema){
+	public boolean existe(Tema tema){		
 		DaoFactory.setFactory(new DaoJpaFactory());
 		TemaDao dao = DaoFactory.getFactory().getTemaDao();
-		if(dao.read(tema.getId())!=null){
-			return true;
-		}
+		for (Tema t : dao.findAll()){
+			if(t.getNombre().equals(tema.getNombre())) return true;
+		}				
 		return false;
 	}
 	

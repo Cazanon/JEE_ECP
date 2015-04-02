@@ -10,10 +10,20 @@
 <body>
 <h2>Nuevo Tema</h2>
 <c:set var="bean" scope="request" value="${addTemaBean}" />
+<c:if test="${bean.existe}">
+	Tema no insertado, ya existe un tema con ese nombre.
+	<br/><br/><br/>
+</c:if>
 <form method="post" action="addTema">
-	Nombre: <input name="nombre" type="text"/><br/><br/>
-	Pregunta: <input name="pregunta" type="text"/><br/><br/>
-	<input type="submit" value="Añadir Tema"/>	
+	<c:if test="${bean.added}">
+		Nombre: <input name="nombre" type="text"/><br/><br/>
+		Pregunta: <input name="pregunta" type="text"/><br/><br/>
+	</c:if>
+	<c:if test="${!bean.added}">
+		Nombre: <input name="nombre" type="text" value="${bean.tema.nombre}"/><br/><br/>
+		Pregunta: <input name="pregunta" type="text" value="${bean.tema.pregunta}"/><br/><br/>
+	</c:if>	
+	<input type="submit" value="Add Tema"/>	
 </form>
 <br/>
 <br/>
