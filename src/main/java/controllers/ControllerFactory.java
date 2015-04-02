@@ -1,18 +1,14 @@
 package controllers;
 
-import controllers.ejb.AddTemaEJBController;
-import controllers.ejb.EliminarTemaEJBController;
-import controllers.ejb.VerVotosEJBController;
-import controllers.ejb.VotarEJBController;
 
 public interface ControllerFactory {
 	
-	public AddTemaEJBController getAddTemaController();
+	public AddTemaController getAddTemaController();
 	
-	public EliminarTemaEJBController getEliminarTemaController();
+	public EliminarTemaController getEliminarTemaController();
 	
-	public VerVotosEJBController getVerVotosController();
+	public VerVotosController getVerVotosController();
 	
-	public VotarEJBController getVotarController();
+	public VotarController getVotarController();
 
 }

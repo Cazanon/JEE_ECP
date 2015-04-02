@@ -1,5 +1,10 @@
 package controllers.ws;
 
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean(name = "controllerFactory")
+@ApplicationScoped
 public class ControllerWs {
 
     private static final String PROTOCOL = "http";

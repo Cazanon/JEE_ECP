@@ -13,8 +13,8 @@ public class AddTemaWsController implements AddTemaController{
 
 	@Override
 	public boolean existe(Tema tema) {
-		// TODO Auto-generated method stub
-		return false;
+		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS,
+                tema.getId().toString(), TemaUris.PATH_CREATED_TEMA).entityBoolean();
 	}
 
 }

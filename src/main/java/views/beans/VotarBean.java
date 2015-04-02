@@ -32,7 +32,7 @@ public class VotarBean extends View{
 	}
 	
 	public VotarBean(){
-		nivelesEstudio = getControllerFactory().getVotarController().getNivelEstudios();
+		nivelesEstudio = getControllerEJBFactory().getVotarController().getNivelEstudios();
 	}
 	
 	public List<String> getNivelesEstudio() {
@@ -100,7 +100,7 @@ public class VotarBean extends View{
 	}
 
 	public void update() {
-		temas = getControllerFactory().getVotarController().getTemas();
+		temas = getControllerEJBFactory().getVotarController().getTemas();
 		if(temas.size() == 0){
 			mensaje = "No hay temas";
 		}
@@ -108,13 +108,13 @@ public class VotarBean extends View{
 	
 	public void process(){
 		if(valoracion != null){			
-			getControllerFactory().getVotarController().votar(voto);
+			getControllerEJBFactory().getVotarController().votar(voto);
 			mensaje = "Has votado";
 		}
 	}
 
 	public void obtenerTema(String id) {
-		tema = getControllerFactory().getVotarController().obtenerTema(id);		
+		tema = getControllerEJBFactory().getVotarController().obtenerTema(id);		
 	}
 	
 	public NivelEstudios getNivel(String nivel){

@@ -39,15 +39,15 @@ public class EliminarTemaBean extends View{
 	}
 
 	public void update() {
-		temas = getControllerFactory().getEliminarTemaController().getTemas();
+		temas = getControllerEJBFactory().getEliminarTemaController().getTemas();
 		if(temas.size() == 0){
 			mensaje = "No hay temas";
 		}
 	}
 	
 	public void process(){
-		if(getControllerFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
-			getControllerFactory().getEliminarTemaController().eliminar(tema);
+		if(getControllerEJBFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
+			getControllerEJBFactory().getEliminarTemaController().eliminar(tema);
 			mensaje = "Tema eliminado";
 		}else{
 			mensaje = "Clave incorrecta. No autorizado a eliminar el tema";
@@ -55,7 +55,7 @@ public class EliminarTemaBean extends View{
 	}
 
 	public void obtenerTema(String id) {
-		tema = getControllerFactory().getEliminarTemaController().obtenerTema(id);		
+		tema = getControllerEJBFactory().getEliminarTemaController().obtenerTema(id);		
 	}
 
 }
