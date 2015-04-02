@@ -29,4 +29,12 @@ public class VotarController {
 		return niveles;
 	}	
 
+	public Tema obtenerTema(String id){
+		DaoFactory.setFactory(new DaoJpaFactory());
+		for(Tema tema : DaoFactory.getFactory().getTemaDao().findAll()){
+			if(tema.getId() == Integer.parseInt(id)) return tema;
+		}
+		return null;
+	}
+	
 }

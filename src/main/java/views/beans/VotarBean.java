@@ -107,16 +107,14 @@ public class VotarBean extends View{
 	}
 	
 	public void process(){
-		if(voto !=null){			
+		if(valoracion != null){			
 			getControllerFactory().getVotarController().votar(voto);
 			mensaje = "Has votado";
 		}
 	}
 
 	public void obtenerTema(String id) {
-		if(id!=null){
-			tema = getControllerFactory().getVotarController().obtenerTema(id);		
-		}
+		tema = getControllerFactory().getVotarController().obtenerTema(id);		
 	}
 	
 	public NivelEstudios getNivel(String nivel){

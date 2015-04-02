@@ -31,7 +31,7 @@ ${bean.mensaje}<br/><br/><br/>
 		<h3>Pregunta:<br/></h3>
 		${bean.tema.pregunta}<br/><br/>
 		Valoracion (0 a 5):  
-		<input type="range" name="respuesta" value="0" min="0" max="5" step="1" onchange="mostrarValor(this.value)"/>
+		<input type="range" name="valoracion" value="0" min="0" max="5" step="1" onchange="mostrarValor(this.value)"/>
 		<span id="valor">0</span>
 		<br/><br/>
 		Selecciona tu nivel de estudios</br>
@@ -41,6 +41,7 @@ ${bean.mensaje}<br/><br/><br/>
 			</c:forEach>
 		</select>
 		<br/><br/>
+		<input type="hidden" name="tema" value="${bean.tema.id}" />
 		<input type="submit" value="Votar"/>
 	</form>
 </c:if>

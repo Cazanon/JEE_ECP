@@ -63,10 +63,15 @@ public class Dispatcher extends HttpServlet{
         String view;
         switch (action) {
         case "votar":
-        	VotarBean votarBean = new VotarBean();
-        	votarBean.obtenerTema(request.getParameter("temaSeleccionado"));
+        	VotarBean votarBean = new VotarBean();        	
+        	if(request.getParameter("tema")!=null){
+        		votarBean.obtenerTema(request.getParameter("tema"));
+        	}else{
+        		votarBean.obtenerTema(request.getParameter("temaSeleccionado"));
+        	}
         	votarBean.setRespuesta(request.getParameter("valoracion"));
         	votarBean.setNivelEstudios(request.getParameter("nivelEstudios"));
+        	votarBean.setIp(request.getLocalAddr());
         	Voto voto = new Voto(votarBean.getValoracion(), votarBean.getNivel(votarBean.getNivelEstudios()), votarBean.getIp(), votarBean.getTema());
         	votarBean.setVoto(voto);
         	votarBean.process();
