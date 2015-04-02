@@ -92,7 +92,8 @@ public class VerVotosBean extends View{
 			numeroVotos = "El tema " + tema.getNombre() + " tiene " + getControllerFactory().getVerVotosController().getVotos(tema) + "votos";
 		}
 		if(nivelEstudios != null){			
-			votosMedia = "El tema " + tema.getNombre() + " tiene " + getControllerFactory().getVerVotosController().mediaVotosTemaNivelEstudios(tema, nivelEstudios) + "votos";
+			votosMedia = "La media de botos del tema " + tema.getNombre() + " para el nivel de estudios " + nivelEstudios + " es de " 
+						 + getControllerFactory().getVerVotosController().mediaVotosTemaNivelEstudios(tema, nivelEstudios);
 		}
 	}
 

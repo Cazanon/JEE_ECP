@@ -14,8 +14,18 @@ public class VerVotosController {
 	}
 	
 	public double mediaVotosTemaNivelEstudios(Tema tema, String nivelEstudios){
-		//TODO implementar funcionalidad
-		return 0;
+		DaoFactory.setFactory(new DaoJpaFactory());
+		int numeroVotos = 0;
+		int valoracionTotal = 0;
+		for(Voto voto : DaoFactory.getFactory().getVotoDao().findAll()){
+			if(voto.getTema().getId() == tema.getId() &&
+			   voto.getNivelEstudios().toString().equals(nivelEstudios)) {
+				numeroVotos++;
+				valoracionTotal += Integer.parseInt(voto.getValoracion());
+			}
+		}
+		if(numeroVotos==0) numeroVotos++;
+		return valoracionTotal/numeroVotos;
 	}
 	
 	public List<Tema> getTemas(){
