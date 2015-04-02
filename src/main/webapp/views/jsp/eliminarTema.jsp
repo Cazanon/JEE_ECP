@@ -10,13 +10,20 @@
 <body>
 <h2>Eliminar Tema</h2>
 <c:set var="bean" scope="request" value="${eliminarTemaBean}" />
+<c:if test="${!bean.autorizado}">
+	Clave incorrecta. No autorizado a eliminar el tema.
+	<br/><br/><br/>
+</c:if>
 <form method="post" action="eliminarTema">
-	Selecciona el tema a elminiar:</br>
+	Selecciona un tema </br>
 	<select name="select" id="select" >
 		<c:forEach var="tema" items="${bean.temas}">
 			<option value="${tema.id}">${tema.nombre}</option>
 		</c:forEach>
 	</select>
+	<br/><br/><br/>
+	Clave para borrar tema:<br/>
+	<input name="clave" type="text"/>
 	<input type="submit" value="Eliminar"/>		
 </form>
 <br/>

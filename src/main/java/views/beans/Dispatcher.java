@@ -17,6 +17,8 @@ public class Dispatcher extends HttpServlet{
 	
 	private static String PATH_ROOT_VIEW = "/views/jsp/";
 	
+	Tema tema;
+	
 	@Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -63,7 +65,7 @@ public class Dispatcher extends HttpServlet{
         	view = action;
         	break;
         case "addTema":
-        	Tema tema = new Tema(request.getParameter("nombre"),request.getParameter("pregunta"));
+        	tema = new Tema(request.getParameter("nombre"),request.getParameter("pregunta"));
         	AddTemaBean addTemaBean = new AddTemaBean();
         	addTemaBean.setTema(tema);
         	addTemaBean.process();
@@ -71,7 +73,11 @@ public class Dispatcher extends HttpServlet{
         	view = action;
         	break;
         case "eliminarTema":
-        	view = action;
+        	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
+        	eliminarTemaBean.obtenerTema(request.getParameter("id"));
+        	eliminarTemaBean.process();
+	    	request.setAttribute(action+"Bean",eliminarTemaBean);
+	    	view = action;
         	break;        	
         default:
             view = "home";

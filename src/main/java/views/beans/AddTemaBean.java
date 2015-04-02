@@ -50,4 +50,9 @@ public class AddTemaBean extends View{
 		}
 	}
 
+	public void obtenerTema(String parameter) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
