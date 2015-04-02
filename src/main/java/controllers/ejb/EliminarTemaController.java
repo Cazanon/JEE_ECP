@@ -14,10 +14,10 @@ public class EliminarTemaController {
 	private final String CLAVE_AUTORIZADO = "666";
 	
 	public void eliminar(Tema tema){
+		DaoFactory.setFactory(new DaoJpaFactory());
 		TemaDao daoTema = DaoFactory.getFactory().getTemaDao();
 		VotoDao daoVoto = DaoFactory.getFactory().getVotoDao();
-		
-		//Hacer esta logica en el DAO?
+
 		List<Voto> votos = daoVoto.findAll();
 		for (Voto voto : votos) {
 			if(voto.getTema().getId() == tema.getId()){
@@ -38,6 +38,14 @@ public class EliminarTemaController {
 	public List<Tema> getTemas(){
 		DaoFactory.setFactory(new DaoJpaFactory());
 		return DaoFactory.getFactory().getTemaDao().findAll();
+	}
+	
+	public Tema obtenerTema(String id){
+		DaoFactory.setFactory(new DaoJpaFactory());
+		for(Tema tema : DaoFactory.getFactory().getTemaDao().findAll()){
+			if(tema.getId() == Integer.parseInt(id)) return tema;
+		}
+		return null;
 	}
 	
 }

@@ -16,9 +16,9 @@
 </c:if>
 <form method="post" action="eliminarTema">
 	Selecciona un tema </br>
-	<select name="select" id="select" >
+	<select name="temaSeleccionado" id="select" >
 		<c:forEach var="tema" items="${bean.temas}">
-			<option value="${tema.id}">${tema.nombre}</option>
+			<option id="id" value="${tema.id}">${tema.nombre}</option>
 		</c:forEach>
 	</select>
 	<br/><br/><br/>

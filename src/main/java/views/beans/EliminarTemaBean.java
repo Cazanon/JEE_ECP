@@ -12,8 +12,16 @@ public class EliminarTemaBean extends View{
 	private static final long serialVersionUID = 1L;
 	
 	private List<Tema> temas;
-	private boolean autorizado = false;
+	private boolean autorizado;
+	private Tema tema;
+	private String clave;
 	
+	public EliminarTemaBean() {}
+	
+	public EliminarTemaBean(String clave) {
+		this.clave = clave;
+	}	
+
 	public List<Tema> getTemas() {
 		return temas;
 	}
@@ -35,12 +43,16 @@ public class EliminarTemaBean extends View{
 	}
 	
 	public void process(){
-		
+		if(getControllerFactory().getEliminarTemaController().autorizado(clave)){
+			autorizado = true;
+			getControllerFactory().getEliminarTemaController().eliminar(tema);
+		}else{
+			autorizado = false;
+		}
 	}
 
-	public void obtenerTema(String parameter) {
-		// TODO Auto-generated method stub
-		
+	public void obtenerTema(String id) {
+		tema = getControllerFactory().getEliminarTemaController().obtenerTema(id);		
 	}
 
 }

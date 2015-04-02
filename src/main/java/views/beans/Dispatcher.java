@@ -73,9 +73,10 @@ public class Dispatcher extends HttpServlet{
         	view = action;
         	break;
         case "eliminarTema":
-        	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
-        	eliminarTemaBean.obtenerTema(request.getParameter("id"));
+        	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean(request.getParameter("clave"));
+        	eliminarTemaBean.obtenerTema(request.getParameter("temaSeleccionado"));
         	eliminarTemaBean.process();
+        	eliminarTemaBean.update();
 	    	request.setAttribute(action+"Bean",eliminarTemaBean);
 	    	view = action;
         	break;        	
