@@ -36,8 +36,8 @@ public class TemaResource {
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Tema> getTemas() {
 		DaoFactory.setFactory(new DaoJpaFactory());
-		List<Tema> listaTemas = DaoFactory.getFactory().getTemaDao().findAll();
-		return listaTemas;
+		List<Tema> temas = DaoFactory.getFactory().getTemaDao().findAll();
+		return temas;
 	}
 	
 	@DELETE

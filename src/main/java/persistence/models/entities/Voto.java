@@ -9,11 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import persistence.models.utils.NivelEstudios;
 
 @Entity
 @Table(name = Voto.TABLE)
+@XmlRootElement
 public class Voto {
     public static final String TABLE = "VOTO";
 
