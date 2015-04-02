@@ -12,7 +12,7 @@ public class EliminarTemaBean extends View{
 	private static final long serialVersionUID = 1L;
 	
 	private List<Tema> temas;
-	private boolean autorizado;
+	private String mensaje;
 	private Tema tema;
 	private String clave;
 	
@@ -30,24 +30,27 @@ public class EliminarTemaBean extends View{
 		this.temas = temas;
 	}
 
-	public boolean isAutorizado() {
-		return autorizado;
+	public String getMensaje() {
+		return mensaje;
 	}
 
-	public void setAutorizado(boolean autorizado) {
-		this.autorizado = autorizado;
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 
 	public void update() {
-		temas = getControllerFactory().getEliminarTemaController().getTemas(); 	
+		temas = getControllerFactory().getEliminarTemaController().getTemas();
+		if(temas.size() == 0){
+			mensaje = "No hay temas";
+		}
 	}
 	
 	public void process(){
-		if(getControllerFactory().getEliminarTemaController().autorizado(clave)){
-			autorizado = true;
+		if(getControllerFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
 			getControllerFactory().getEliminarTemaController().eliminar(tema);
+			mensaje = "Tema eliminado";
 		}else{
-			autorizado = false;
+			mensaje = "Clave incorrecta. No autorizado a eliminar el tema";
 		}
 	}
 

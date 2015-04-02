@@ -11,7 +11,7 @@ public class AddTemaBean extends View{
 	private static final long serialVersionUID = 1L;
 	
 	private Tema tema;
-	private boolean existe;
+	private String mensaje;
 	private boolean added = false;
 	
 	public void setTema(Tema tema) {
@@ -22,14 +22,6 @@ public class AddTemaBean extends View{
 		return tema;
 	}
 
-	public boolean isExiste() {
-		return existe;
-	}
-
-	public void setExiste(boolean existe) {
-		this.existe = existe;
-	}
-
 	public boolean isAdded() {
 		return added;
 	}
@@ -38,21 +30,24 @@ public class AddTemaBean extends View{
 		this.added = added;
 	}
 
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
 	public void process() {
-		setExiste(false);
 		assert tema != null;		
 		AddTemaController addTemaController = getControllerFactory().getAddTemaController(); 
 		if(!addTemaController.existe(tema)){
 			addTemaController.add(tema);
-			setAdded(true);
+			added = true;
+			mensaje = "Tema añadido";
 		}else{
-			setExiste(true);
+			setMensaje("Tema no insertado, ya existe un tema con ese nombre");
 		}
-	}
-
-	public void obtenerTema(String parameter) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

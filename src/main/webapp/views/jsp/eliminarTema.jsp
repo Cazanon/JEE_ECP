@@ -10,10 +10,7 @@
 <body>
 <h2>Eliminar Tema</h2>
 <c:set var="bean" scope="request" value="${eliminarTemaBean}" />
-<c:if test="${!bean.autorizado}">
-	Clave incorrecta. No autorizado a eliminar el tema.
-	<br/><br/><br/>
-</c:if>
+${bean.mensaje}<br/><br/><br/>
 <form method="post" action="eliminarTema">
 	Selecciona un tema </br>
 	<select name="temaSeleccionado" id="select" >

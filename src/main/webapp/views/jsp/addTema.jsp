@@ -10,10 +10,7 @@
 <body>
 <h2>Nuevo Tema</h2>
 <c:set var="bean" scope="request" value="${addTemaBean}" />
-<c:if test="${bean.existe}">
-	Tema no insertado, ya existe un tema con ese nombre.
-	<br/><br/><br/>
-</c:if>
+${bean.mensaje}<br/><br/><br/>
 <form method="post" action="addTema">
 	<c:if test="${bean.added}">
 		Nombre: <input name="nombre" type="text"/><br/><br/>
