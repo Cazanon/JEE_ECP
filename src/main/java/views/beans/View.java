@@ -14,11 +14,9 @@ public class View implements Serializable{
 	private ControllerFactory controllerFactory;
 
 	public ControllerFactory getControllerFactory() {
+		if(controllerFactory == null){
+			controllerFactory = new ControllerFactory();
+		}
 		return controllerFactory;
 	}
-
-	public void setControllerFactory(ControllerFactory controllerFactory) {
-		this.controllerFactory = controllerFactory;
-	}	
-
 }

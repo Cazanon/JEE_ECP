@@ -11,8 +11,8 @@
 <h2>Nuevo Tema</h2>
 <c:set var="bean" scope="request" value="${addTemaBean}" />
 <form method="post" action="addTema">
-	Nombre: <input id="nombre" type="text"/><br/><br/>
-	Pregunta: <input id="pregunta" type="text"/><br/><br/>
+	Nombre: <input name="nombre" type="text"/><br/><br/>
+	Pregunta: <input name="pregunta" type="text"/><br/><br/>
 	<input type="submit" value="Añadir Tema"/>	
 </form>
 <br/>
