@@ -15,8 +15,10 @@ import javax.ws.rs.core.Response;
 
 import persistence.models.daos.DaoFactory;
 import persistence.models.daos.TemaDao;
+import persistence.models.daos.VotoDao;
 import persistence.models.daos.jpa.DaoJpaFactory;
 import persistence.models.entities.Tema;
+import persistence.models.entities.Voto;
 import ws.TemaUris;
 
 @Path(TemaUris.PATH_TEMAS)
@@ -57,6 +59,14 @@ public class TemaResource {
 	@Path(TemaUris.PATH_ID)
 	public void delete(@PathParam("id") Integer id) {
 		DaoFactory.setFactory(new DaoJpaFactory());
-    	DaoFactory.getFactory().getTemaDao().deleteById(id);
+		TemaDao daoTema = DaoFactory.getFactory().getTemaDao();
+		VotoDao daoVoto = DaoFactory.getFactory().getVotoDao();
+		List<Voto> votos = daoVoto.findAll();
+		for (Voto voto : votos) {
+			if(voto.getTema().getId() == id){
+				daoVoto.deleteById(voto.getId());
+			}
+		}		
+		daoTema.deleteById(id);
 	}
 }

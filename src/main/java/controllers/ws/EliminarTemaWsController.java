@@ -17,9 +17,7 @@ public class EliminarTemaWsController implements EliminarTemaController{
 
 	@Override
 	public boolean autorizado(String clave) {
-		WsManager webServicesManager = ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS,TemaUris.PATH_AUTORIZADO);
-        webServicesManager.addParams("clave", clave);
-        return webServicesManager.entityBoolean();
+		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, clave, TemaUris.PATH_AUTORIZADO).entityBoolean();
 	}
 
 	@Override
