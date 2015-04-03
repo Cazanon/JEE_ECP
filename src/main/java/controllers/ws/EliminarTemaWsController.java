@@ -2,6 +2,8 @@ package controllers.ws;
 
 import java.util.List;
 
+import javax.ws.rs.core.GenericType;
+
 import persistence.models.entities.Tema;
 import ws.TemaUris;
 import controllers.EliminarTemaController;
@@ -15,20 +17,20 @@ public class EliminarTemaWsController implements EliminarTemaController{
 
 	@Override
 	public boolean autorizado(String clave) {
-		// TODO Auto-generated method stub
-		return false;
+		WsManager webServicesManager = ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS,TemaUris.PATH_AUTORIZADO);
+        webServicesManager.addParams("clave", clave);
+        return webServicesManager.entityBoolean();
 	}
 
 	@Override
 	public List<Tema> getTemas() {
-		// TODO Auto-generated method stub
-		return null;
+		GenericType<List<Tema>> genericType = new GenericType<List<Tema>>(){};
+        return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS).entities(genericType);
 	}
 
 	@Override
 	public Tema obtenerTema(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, id.toString()).entity(Tema.class);
 	}
 
 }

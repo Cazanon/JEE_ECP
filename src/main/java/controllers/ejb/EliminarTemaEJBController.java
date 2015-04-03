@@ -12,8 +12,6 @@ import persistence.models.entities.Voto;
 
 public class EliminarTemaEJBController implements EliminarTemaController{
 
-	private final String CLAVE_AUTORIZADO = "666";
-
 	@Override
 	public void eliminar(Tema tema){
 		DaoFactory.setFactory(new DaoJpaFactory());

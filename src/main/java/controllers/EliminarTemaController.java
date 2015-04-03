@@ -6,6 +6,8 @@ import persistence.models.entities.Tema;
 
 public interface EliminarTemaController {
 
+	final String CLAVE_AUTORIZADO = "666";
+	
 	public void eliminar(Tema tema);
 	
 	public boolean autorizado(String clave);
