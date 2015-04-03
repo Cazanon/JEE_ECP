@@ -2,7 +2,10 @@ package controllers.ws;
 
 import java.util.List;
 
+import javax.ws.rs.core.GenericType;
+
 import persistence.models.entities.Tema;
+import ws.TemaUris;
 import controllers.VerVotosController;
 
 public class VerVotosWsController implements VerVotosController{
@@ -21,14 +24,13 @@ public class VerVotosWsController implements VerVotosController{
 
 	@Override
 	public List<Tema> getTemas() {
-		// TODO Auto-generated method stub
-		return null;
+		GenericType<List<Tema>> genericType = new GenericType<List<Tema>>(){};
+        return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS).entities(genericType);
 	}
 
 	@Override
 	public int getVotos(Tema tema) {
-		// TODO Auto-generated method stub
-		return 0;
+		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, tema.getNombre()).entity(Integer.class);
 	}
 
 }
