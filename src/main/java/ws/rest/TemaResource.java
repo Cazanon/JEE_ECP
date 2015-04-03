@@ -34,11 +34,9 @@ public class TemaResource {
 	}
 	
 	@GET
-    @Path(TemaUris.PATH_ID + TemaUris.PATH_EXISTE)
+    @Path(TemaUris.PATH_NOMBRE + TemaUris.PATH_EXISTE)
     public String existe(@PathParam("nombre") String nombre) {
-        Boolean result = false;
-        DaoFactory.setFactory(new DaoJpaFactory());
-        
+        Boolean result = false;        
 		DaoFactory.setFactory(new DaoJpaFactory());
 		TemaDao dao = DaoFactory.getFactory().getTemaDao();
 		for (Tema t : dao.findAll()){
