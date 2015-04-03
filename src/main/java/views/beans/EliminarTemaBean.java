@@ -46,10 +46,10 @@ public class EliminarTemaBean extends View{
 	}
 	
 	public void process(){
-		/*if(getControllerEJBFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
-			getControllerEJBFactory().getEliminarTemaController().eliminar(tema);		*/
-		if(getControllerWSFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
-			getControllerWSFactory().getEliminarTemaController().eliminar(tema);
+		//if(getControllerWSFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
+		//getControllerWSFactory().getEliminarTemaController().eliminar(tema);
+		if(getControllerEJBFactory().getEliminarTemaController().autorizado(clave) && tema !=null){
+			getControllerEJBFactory().getEliminarTemaController().eliminar(tema);
 			mensaje = "Tema eliminado";
 		}else{
 			mensaje = "Clave incorrecta. No autorizado a eliminar el tema";
