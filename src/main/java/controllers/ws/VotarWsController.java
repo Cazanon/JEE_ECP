@@ -2,34 +2,33 @@ package controllers.ws;
 
 import java.util.List;
 
+import javax.ws.rs.core.GenericType;
+
 import persistence.models.entities.Tema;
 import persistence.models.entities.Voto;
+import ws.TemaUris;
 import controllers.VotarController;
 
 public class VotarWsController implements VotarController{
 
 	@Override
-	public void votar(Voto voto) {
-		// TODO Auto-generated method stub
-		
+	public void votar(Voto voto) {		
 	}
 
 	@Override
 	public List<Tema> getTemas() {
-		// TODO Auto-generated method stub
-		return null;
+		GenericType<List<Tema>> genericType = new GenericType<List<Tema>>(){};
+        return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS).entities(genericType);
 	}
 
 	@Override
 	public List<String> getNivelEstudios() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Tema obtenerTema(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, id.toString()).entity(Tema.class);
 	}
 
 }

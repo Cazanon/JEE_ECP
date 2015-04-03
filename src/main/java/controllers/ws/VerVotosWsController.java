@@ -6,19 +6,18 @@ import javax.ws.rs.core.GenericType;
 
 import persistence.models.entities.Tema;
 import ws.TemaUris;
+import ws.VotoUris;
 import controllers.VerVotosController;
 
 public class VerVotosWsController implements VerVotosController{
 
 	@Override
 	public int votosPorTema(Tema tema) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public double mediaVotosTemaNivelEstudios(Tema tema, String nivelEstudios) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -30,7 +29,7 @@ public class VerVotosWsController implements VerVotosController{
 
 	@Override
 	public int getVotos(Tema tema) {
-		return ControllerWs.buildWebServiceManager(TemaUris.PATH_TEMAS, tema.getNombre()).entity(Integer.class);
+		return ControllerWs.buildWebServiceManager(VotoUris.PATH_VOTOS, tema.getId().toString(),VotoUris.PATH_ID).entity(Integer.class);
 	}
 
 }

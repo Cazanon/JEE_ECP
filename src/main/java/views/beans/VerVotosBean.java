@@ -37,7 +37,8 @@ public class VerVotosBean extends View{
 	}
 	
 	public VerVotosBean(){
-		nivelesEstudio = getControllerEJBFactory().getVotarController().getNivelEstudios();
+		//nivelesEstudio = getControllerEJBFactory().getVotarController().getNivelEstudios();
+		nivelesEstudio = getControllerWSFactory().getVotarController().getNivelEstudios();
 	}
 	
 	public List<String> getNivelesEstudio() {
@@ -81,7 +82,8 @@ public class VerVotosBean extends View{
 	}
 
 	public void update() {
-		temas = getControllerEJBFactory().getVerVotosController().getTemas();
+		//temas = getControllerEJBFactory().getVerVotosController().getTemas();
+		temas = getControllerWSFactory().getVerVotosController().getTemas();
 		if(temas.size() == 0){
 			mensaje = "No hay temas";
 		}
@@ -89,7 +91,8 @@ public class VerVotosBean extends View{
 	
 	public void process(){
 		if(tema != null){			
-			numeroVotos = "El tema " + tema.getNombre() + " tiene " + getControllerEJBFactory().getVerVotosController().getVotos(tema) + "votos";
+			//numeroVotos = "El tema " + tema.getNombre() + " tiene " + getControllerEJBFactory().getVerVotosController().getVotos(tema) + "votos";
+			numeroVotos = "El tema " + tema.getNombre() + " tiene " + getControllerWSFactory().getVerVotosController().getVotos(tema) + "votos";
 		}
 		if(nivelEstudios != null){			
 			votosMedia = "La media de botos del tema " + tema.getNombre() + " para el nivel de estudios " + nivelEstudios + " es de " 
