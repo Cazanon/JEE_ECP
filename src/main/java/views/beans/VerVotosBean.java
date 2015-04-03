@@ -70,7 +70,7 @@ public class VerVotosBean extends View{
 	}
 
 	public void setTema(Tema tema) {
-		this.tema = tema;
+		this.tema = tema; 
 	}
 
 	public String getNivelEstudios() {
