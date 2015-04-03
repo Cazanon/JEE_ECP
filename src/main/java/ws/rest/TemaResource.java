@@ -34,19 +34,7 @@ public class TemaResource {
 				.entity(String.valueOf(tema.getId())).build();
 		return result;
 	}
-	
-	@GET
-    @Path(TemaUris.PATH_NOMBRE + TemaUris.PATH_EXISTE)
-    public String existe(@PathParam("nombre") String nombre) {
-        Boolean result = false;        
-		DaoFactory.setFactory(new DaoJpaFactory());
-		TemaDao dao = DaoFactory.getFactory().getTemaDao();
-		for (Tema t : dao.findAll()){
-			if(t.getNombre().equals(nombre)) result = true;
-		}	
-        return Boolean.toString(result);
-    }
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Tema> getTemas() {
@@ -69,4 +57,5 @@ public class TemaResource {
 		}		
 		daoTema.deleteById(id);
 	}
+	
 }

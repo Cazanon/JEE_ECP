@@ -10,5 +10,4 @@ public interface TemaUris {
 
 	String PATH_EXISTE = "/existe";
 	
-	String PATH_AUTORIZADO = "/autorizado";
 }
